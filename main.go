@@ -1,8 +1,11 @@
 package main
 
-import "backend/try"
+import (
+	"backend/try/sort"
+	"fmt"
+)
 
 func main() {
 	numbers := []int{1, 8, 3, 4, 9, 7}
-	try.QuickSort(numbers)
+	fmt.Println(try.QuickSort(numbers))
 }
