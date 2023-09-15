@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	numbers := []int{1, 8, 3, 4, 9, 7}
-	fmt.Println(try.QuickSort(numbers))
+	numbers := []int{5, 4, 1, 8, 7, 3, 2, 9}
+	fmt.Println(try.MergeSort(numbers))
 }
