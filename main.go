@@ -1,11 +1,27 @@
 package main
 
 import (
-	"backend/try/sort"
-	"fmt"
+	try "backend/try/list"
 )
 
 func main() {
-	numbers := []int{5, 4, 1, 8, 7, 3, 2, 9}
-	fmt.Println(try.MergeSort(numbers))
+	ll := new(try.LinkedList)
+
+	ll.Insert(1)
+	ll.Insert(4)
+	ll.Insert(6)
+	ll.Insert(8)
+	ll.Insert(9)
+	ll.Insert(10)
+	ll.Insert(6)
+	ll.Insert(3)
+	ll.Insert(2)
+	ll.Insert(3)
+	// ll.ReverseIterative()
+	// ll.ReverseRecursive()
+	ll.ReverseEven()
+	ll.Display()
+
 }
+
+
