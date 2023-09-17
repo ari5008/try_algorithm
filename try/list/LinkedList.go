@@ -2,7 +2,6 @@ package try
 
 import (
 	"fmt"
-
 )
 
 type Node struct {
@@ -30,18 +29,18 @@ func (ll *LinkedList) Insert(data int) {
 	}
 }
 
-// func (ll *LinkedList) ReverseIterative() {
-// 	var prev *Node 
-// 	current := ll.Head
+func (ll *LinkedList) ReverseIterative() {
+	var prev *Node
+	current := ll.Head
 
-// 	for current != nil {
-// 			next := current.Next
-// 			current.Next = prev
-// 			prev = current
-// 			current = next
-// 	}
-// 	ll.Head = prev
-// }
+	for current != nil {
+			next := current.Next
+			current.Next = prev
+			prev = current
+			current = next
+	}
+	ll.Head = prev
+}
 
 // func (ll *LinkedList) ReverseRecursive() {
 // 	ll.Head = ll.reverse(ll.Head, nil)
@@ -51,40 +50,37 @@ func (ll *LinkedList) Insert(data int) {
 // 	if current == nil {
 // 			return prev
 // 	}
-	
+
 // 	next := current.Next
 // 	current.Next = prev
-	
+
 // 	return ll.reverse(next, current)
 // }
 
 func (ll *LinkedList) ReverseEven() {
-	var prev *Node
-	current := ll.Head
+	ll.Head = reverseEven(ll.Head, nil)
+}
 
-	for current != nil {
-		if current.Data % 2 == 0 {
+func reverseEven(head *Node, prev *Node) *Node {
+	if head == nil {
+			return nil
+	}
+	
+	current := head
+	for current != nil && current.Data%2 == 0 {
 			next := current.Next
 			current.Next = prev
 			prev = current
 			current = next
-			
-		} else {
-			if prev == nil {
-				current = current.Next
-			}
-		}
 	}
-	// ll.Head = prev
-}
 
-func (ll *LinkedList) Filter() {
-	current := ll.Head
-	for current != nil {
-		if current.Data%2 != 0 {
-			fmt.Printf("%d ", current.Data)
-		}
-		current = current.Next
+	if current != head {
+			head.Next = current
+			reverseEven(current, nil)
+			return prev
+	} else {
+			head.Next = reverseEven(head.Next, head)
+			return head
 	}
 }
 
