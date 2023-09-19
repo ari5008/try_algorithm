@@ -1,69 +1,89 @@
-package main
-
-import (
-	try "backend/try/list"
-)
-
-func main() {
-	ll := new(try.LinkedList)
-
-	ll.Insert(9)
-	ll.Insert(2)
-	ll.Insert(4)
-	// ll.ReverseIterative()
-	// ll.ReverseRecursive()
-	ll.ReverseEven()
-	ll.Display()
-
-}
-
 // package main
 
 // import "fmt"
 
-// type Employee struct {
-// 	Number int
-// 	Name   string
+// type People struct {
+// 	Number      int
+// 	Old         int
+// 	Children    bool
+// 	AlcoholFlag bool
+// 	TotalPrice  int
 // }
 
 // func main() {
-// 	var N int
-// 	fmt.Scan(&N)
+// 	var (
+// 		N int
+// 		K int
+// 	)
+// 	fmt.Scan(&N, &K)
 
-// 	var employees []Employee
+// 	peoples := []People{}
 // 	for i := 0; i <= N-1; i++ {
-// 		var Func string
-// 		fmt.Scan(&Func)
-
-// 		switch Func {
-// 		case "make":
-// 			var num int
-// 			var name string
-// 			fmt.Scan(&num)
-// 			fmt.Scan(&name)
-// 			employee := Employee{
-// 				Number: num,
-// 				Name:   name,
+// 		var old int
+// 		fmt.Scan(&old)
+// 		if old >= 20 {
+// 			people := People{
+// 				Number:   i + 1,
+// 				Old:      old,
+// 				Children: false,
 // 			}
-// 			employees = append(employees, employee)
-// 		case "getnum":
-// 			var S int
-// 			fmt.Scan(&S)
-// 			value := getnum(S, employees)
-// 			fmt.Println(value)
-// 		case "getnamPrintlntry
-// 			var S int
-// 			fmt.Scan(&S)
-// 			value := getname(S, employees)
-// 			fmt.Println(value)
+// 			peoples = append(peoples, people)
+// 		} else {
+// 			people := People{
+// 				Number:   i + 1,
+// 				Old:      old,
+// 				Children: true,
+// 			}
+// 			peoples = append(peoples, people)
 // 		}
 // 	}
+
+// 	for i := 0; i <= K-1; i++ {
+// 		var (
+// 			num   int
+// 			dish  string
+// 			price int
+// 		)
+// 		fmt.Scan(&num, &dish, &price)
+
+// 		if dish == "softdrink" {
+// 			peoples[num-1].TotalPrice += price
+// 		} else if dish == "food" {
+// 			if peoples[num-1].AlcoholFlag {
+// 				peoples[num-1].TotalPrice += price - 200
+// 			} else {
+// 				peoples[num-1].TotalPrice += price
+// 			}
+// 		} else if dish == "alcohol" {
+// 			if peoples[num-1].Children {
+// 				return
+// 			} else {
+// 				peoples[num-1].TotalPrice += price
+// 				peoples[num-1].AlcoholFlag = true
+// 			}
+// 		}
+// 	}
+
+// 	for _, people := range peoples {
+// 		fmt.Println(people.TotalPrice)
+// 	}
+
 // }
 
-// func getnum(num int, employees []Employee) int {
-// 	return employees[num - 1].Number
-// }
+package main
 
-// func getname(name int, employees []Employee) string {
-// 	return employees[name - 1].Name
-// }
+import try "backend/try/list"
+
+
+func main() {
+	ll := new(try.DoubleLinkedList)
+
+	// ll.Append(2)
+	// ll.Append(3)
+	ll.Insert(9)
+	ll.Insert(2)
+	ll.Insert(2)
+	// ll.Remove(3)
+	ll.Display()
+
+}
