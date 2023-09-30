@@ -1,10 +1,9 @@
 package try
 
 import (
-	"crypto/md5"
-	"encoding/hex"
+	"crypto/sha256"
+	"encoding/binary"
 	"fmt"
-	"strconv"
 )
 
 type HashTable struct {
@@ -20,11 +19,11 @@ func NewHashTable(size int) *HashTable {
 }
 
 func (ht *HashTable) hash(key string) int {
-	hasher := md5.New()
+	hasher := sha256.New()
 	hasher.Write([]byte(key))
-	hashValue := hex.EncodeToString(hasher.Sum(nil))
-	valueInt, _ := strconv.ParseInt(hashValue, 16, 32)
-	return int(valueInt) % ht.size
+	hashBytes := hasher.Sum(nil)
+	hashValue := binary.BigEndian.Uint32(hashBytes[:4])
+	return int((hashValue % 10) + 1)
 }
 
 func (ht *HashTable) Add(key string, value string) {
